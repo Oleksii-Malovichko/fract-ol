@@ -6,7 +6,7 @@
 /*   By: alex <alex@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 14:54:15 by omalovic          #+#    #+#             */
-/*   Updated: 2024/12/29 13:22:25 by alex             ###   ########.fr       */
+/*   Updated: 2024/12/30 16:14:46 by alex             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,7 @@ int				count_words(const char *s, char c);
 int				get_word_length(const char **s, char c);
 char			*get_next_word(const char **s, char c);
 void			*ft_realloc(void *ptr, size_t size, size_t old_size);
+int				ft_strcmp(char *s1, char *s2);
 
 typedef struct s_list
 {

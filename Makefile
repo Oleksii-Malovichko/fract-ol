@@ -1,8 +1,8 @@
 NAME = fractol
 CC = cc 
-CFLAGS = -Wall -Wextra -Werror -Ilib
+CFLAGS = -Ilib
 
-SRC = srcs/main.c
+SRC = srcs/main.c srcs/drawing_mandelbrot.c
 OBJS = $(SRC:.c=.o)
 
 SRC_GNL = lib/get_next_line/get_next_line.c lib/get_next_line/get_next_line_utils.c 
