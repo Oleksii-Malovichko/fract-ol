@@ -2,7 +2,7 @@ NAME = fractol
 CC = cc 
 CFLAGS = -Ilib
 
-SRC = srcs/main.c srcs/drawing_mandelbrot.c
+SRC = srcs/main.c srcs/drawing_mandelbrot.c srcs/tools.c
 OBJS = $(SRC:.c=.o)
 
 SRC_GNL = lib/get_next_line/get_next_line.c lib/get_next_line/get_next_line_utils.c 

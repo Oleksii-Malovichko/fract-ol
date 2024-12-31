@@ -1,27 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcmp.c                                        :+:      :+:    :+:   */
+/*   ft_toupper.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alex <alex@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: omalovic <omalovic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/31 15:35:16 by alex              #+#    #+#             */
-/*   Updated: 2024/12/31 15:37:34 by alex             ###   ########.fr       */
+/*   Created: 2024/10/08 15:57:16 by omalovic          #+#    #+#             */
+/*   Updated: 2024/10/09 15:01:56 by omalovic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int ft_strcmp(char *s1, char *s2)
+int	ft_toupper(int c)
 {
-	int	i;
-
-	i = 0;
-	while (s1[i] != '\0' && s2[i] != '\0')
+	if ('a' <= c && 'z' >= c)
 	{
-		if (s1[i] != s2[i])
-			return ((unsigned char)s1[i] - (unsigned char)s2[i]);
-		i++;
+		c -= 32;
 	}
-	return ((unsigned char)s1[i] - (unsigned char)s2[i]);
+	return (c);
 }
+
+// int main()
+// {
+// 	printf("%c\n", ft_toupper('`'));
+// }

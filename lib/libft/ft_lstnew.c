@@ -1,27 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcmp.c                                        :+:      :+:    :+:   */
+/*   ft_lstnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alex <alex@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/31 15:35:16 by alex              #+#    #+#             */
-/*   Updated: 2024/12/31 15:37:34 by alex             ###   ########.fr       */
+/*   Created: 2024/10/12 11:26:38 by alex              #+#    #+#             */
+/*   Updated: 2024/10/12 11:39:36 by alex             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int ft_strcmp(char *s1, char *s2)
+t_list	*ft_lstnew(void *content)
 {
-	int	i;
+	t_list	*new_node;
 
-	i = 0;
-	while (s1[i] != '\0' && s2[i] != '\0')
-	{
-		if (s1[i] != s2[i])
-			return ((unsigned char)s1[i] - (unsigned char)s2[i]);
-		i++;
-	}
-	return ((unsigned char)s1[i] - (unsigned char)s2[i]);
+	new_node = (t_list *)malloc(sizeof(t_list));
+	if (!new_node)
+		return (NULL);
+	new_node->content = content;
+	new_node->next = NULL;
+	return (new_node);
 }
+
+/* int main()
+{
+	int *value = malloc(sizeof(int));
+
+	*value = 42;
+	t_list *node = ft_lstnew(value);
+	if (node)
+	{
+		printf("Content: %d\n", *(int *)node->content);
+	}
+	else
+	{
+		printf("Failed to create node\n");
+	}
+} */
