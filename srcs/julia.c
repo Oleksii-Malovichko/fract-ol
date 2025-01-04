@@ -6,7 +6,7 @@
 /*   By: alex <alex@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/31 15:42:41 by alex              #+#    #+#             */
-/*   Updated: 2025/01/04 17:32:08 by alex             ###   ########.fr       */
+/*   Updated: 2025/01/04 20:03:01 by alex             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ void	julia(t_data *data)
 	int	color;
 
 	data->y = 0;
+	mlx_clear_window(data->mlx, data->win);
 	while (data->y < HIGHT)
 	{
 		data->x = 0;

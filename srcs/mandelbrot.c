@@ -6,7 +6,7 @@
 /*   By: alex <alex@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/30 16:05:37 by alex              #+#    #+#             */
-/*   Updated: 2025/01/04 17:27:23 by alex             ###   ########.fr       */
+/*   Updated: 2025/01/04 20:02:44 by alex             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ void	mandelbrot(t_data *data)
 	int	color;
 
 	data->y = 0;
+	mlx_clear_window(data->mlx, data->win);
 	while (data->y < HIGHT)
 	{
 		data->x = 0;

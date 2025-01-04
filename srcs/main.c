@@ -6,7 +6,7 @@
 /*   By: alex <alex@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/30 14:48:03 by alex              #+#    #+#             */
-/*   Updated: 2025/01/04 17:41:46 by alex             ###   ########.fr       */
+/*   Updated: 2025/01/04 20:04:49 by alex             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,8 @@
 
 int	close_window(t_data *data)
 {
-	if (data->img)
-		mlx_destroy_image(data->mlx, data->img);
-	if (data->win)
-		mlx_destroy_window(data->mlx, data->win);
+	mlx_destroy_image(data->mlx, data->img);
+	mlx_destroy_window(data->mlx, data->win);
 	free(data);
 	exit(0);
 }
@@ -35,10 +33,24 @@ int	main(int n, char **args)
 {
 	t_data	*data;
 
-	data = NULL;
-	check_arg(args, &data, n);
-	init_data(data);
-	mlx_hooks(data);
+	data = (t_data *)malloc(sizeof(t_data));
+	if (!data)
+		ft_error(strerror(errno), data);
+	if (n > 1)
+	{
+		check_arg(args, data, n);
+		data->mlx = mlx_init();
+		data->win = mlx_new_window(data->mlx, WIDTH, HIGHT, "Fractol");
+		data->img = mlx_new_image(data->mlx, WIDTH, HIGHT);
+		data->addr = mlx_get_data_addr(data->img, &data->bpp,
+				&data->line_length, &data->endian);
+		init_data(data);
+		mlx_hooks(data);
+	}
+	else
+		ft_error("Usage: ./fractol mandelbrot|julia\n\nExamples:\n\
+./fractol mandelbrot\n./fractol julia -0.7 0.27015\n\
+./fractol julia 0.335 0.355\n./fractol julia -0.4 0.6\n", data);
 	free(data);
 	return (0);
 }
