@@ -6,7 +6,7 @@
 /*   By: alex <alex@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 18:38:04 by alex              #+#    #+#             */
-/*   Updated: 2025/01/04 16:42:29 by alex             ###   ########.fr       */
+/*   Updated: 2025/01/04 18:22:19 by alex             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,4 +61,13 @@ int	get_color1(int iteration, int max_iter, int color_shift)
 	green = (green + color_shift) % 256;
 	blue = (blue + color_shift) % 256;
 	return (red << 16 | green << 8 | blue);
+}
+
+int	choose_color(int iteration, int max_iter, int color_shift, int color_code)
+{
+	if (color_code == 0)
+		return (get_color1(iteration, max_iter, color_shift));
+	else if (color_code == 1)
+		return (get_color2(iteration, max_iter, color_shift));
+	return (get_color3(iteration, max_iter, color_shift));
 }

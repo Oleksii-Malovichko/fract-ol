@@ -6,7 +6,7 @@
 /*   By: alex <alex@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/31 15:26:35 by alex              #+#    #+#             */
-/*   Updated: 2025/01/04 17:44:36 by alex             ###   ########.fr       */
+/*   Updated: 2025/01/04 18:25:23 by alex             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,20 @@ void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 		dst = data->addr + (y * data->line_length + x * (data->bpp / 8));
 		*(unsigned int *)dst = color;
 	}
+}
+
+void	key_hook_helper(int keycode, t_data *data)
+{
+	if (keycode == 61)
+		mouse_press(4, WIDTH / 2, HIGHT / 2, data);
+	else if (keycode == 45)
+		mouse_press(5, WIDTH / 2, HIGHT / 2, data);
+	else if (keycode == 49)
+		data->color_code = 0;
+	else if (keycode == 50)
+		data->color_code = 1;
+	else if (keycode == 51)
+		data->color_code = 2;
 }
 
 int	key_hook(int keycode, t_data *data)
@@ -45,16 +59,8 @@ int	key_hook(int keycode, t_data *data)
 		data->color_shift -= 10;
 		data->offset_y += move_factor;
 	}
-	else if (keycode == 61)
-		mouse_press(4, WIDTH / 2, HIGHT / 2, data);
-	else if (keycode == 45)
-		mouse_press(5, WIDTH / 2, HIGHT / 2, data);
-	else if (keycode == 49)
-		data->color_code = 0;
-	else if (keycode == 50)
-		data->color_code = 1;
-	else if (keycode == 51)
-		data->color_code = 2;
+	else
+		key_hook_helper(keycode, data);
 	render_fractal(data);
 	return (0);
 }
@@ -87,13 +93,4 @@ void	render_fractal(t_data *data)
 	else if (data->fractol == JULIA)
 		julia(data);
 	mlx_put_image_to_window(data->mlx, data->win, data->img, 0, 0);
-}
-
-int	choose_color(int iteration, int max_iter, int color_shift, int color_code)
-{
-	if (color_code == 0)
-		return (get_color1(iteration, max_iter, color_shift));
-	else if (color_code == 1)
-		return (get_color2(iteration, max_iter, color_shift));
-	return (get_color3(iteration, max_iter, color_shift));
 }
