@@ -6,7 +6,7 @@
 /*   By: alex <alex@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/31 15:26:35 by alex              #+#    #+#             */
-/*   Updated: 2025/01/04 18:25:23 by alex             ###   ########.fr       */
+/*   Updated: 2025/01/05 15:39:40 by alex             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,6 +90,8 @@ void	render_fractal(t_data *data)
 {
 	if (data->fractol == MANDELBROT)
 		mandelbrot(data);
+	else if (data->fractol == BURNINGSHIP)
+		burningship(data);
 	else if (data->fractol == JULIA)
 		julia(data);
 	mlx_put_image_to_window(data->mlx, data->win, data->img, 0, 0);

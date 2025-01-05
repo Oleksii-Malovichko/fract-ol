@@ -6,7 +6,7 @@
 /*   By: alex <alex@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/30 14:48:03 by alex              #+#    #+#             */
-/*   Updated: 2025/01/04 20:04:49 by alex             ###   ########.fr       */
+/*   Updated: 2025/01/05 15:27:47 by alex             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ void	mlx_hooks(t_data *data)
 	mlx_mouse_hook(data->win, mouse_press, data);
 	mlx_hook(data->win, 17, 0, close_window, data);
 	render_fractal(data);
-	mlx_loop(data->mlx);
 }
 
 int	main(int n, char **args)
@@ -35,7 +34,7 @@ int	main(int n, char **args)
 
 	data = (t_data *)malloc(sizeof(t_data));
 	if (!data)
-		ft_error(strerror(errno), data);
+		ft_printf("Error: %s\n", strerror(errno));
 	if (n > 1)
 	{
 		check_arg(args, data, n);
@@ -46,11 +45,10 @@ int	main(int n, char **args)
 				&data->line_length, &data->endian);
 		init_data(data);
 		mlx_hooks(data);
+		mlx_loop(data->mlx);
 	}
 	else
-		ft_error("Usage: ./fractol mandelbrot|julia\n\nExamples:\n\
-./fractol mandelbrot\n./fractol julia -0.7 0.27015\n\
-./fractol julia 0.335 0.355\n./fractol julia -0.4 0.6\n", data);
+		ft_error(data);
 	free(data);
 	return (0);
 }
