@@ -1,8 +1,8 @@
 NAME = fractol
 CC = cc 
-CFLAGS = -fsanitize=address -g -Wall -Wextra -Werror -Ilib
+CFLAGS = -fsanitize=address -g -Wall -Wextra -Werror -Ilib -lm
 
-SRC = srcs/main.c srcs/mandelbrot.c srcs/tools.c srcs/julia.c srcs/colors.c srcs/init.c
+SRC = srcs/main.c srcs/mandelbrot.c srcs/tools.c srcs/julia.c srcs/colors.c srcs/init.c srcs/burningship.c
 OBJS = $(SRC:.c=.o)
 
 PRINTF_DIR = lib/ft_printf
@@ -23,6 +23,7 @@ $(MINIMLX):
 	@$(MAKE) -C $(MINIMLX_DIR)
 
 clean:
+	rm -f $(OBJS)
 	@$(MAKE) -C $(MINIMLX_DIR) clean
 	@$(MAKE) -C $(PRINTF_DIR) clean
 

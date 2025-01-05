@@ -6,7 +6,7 @@
 /*   By: alex <alex@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/30 14:45:03 by alex              #+#    #+#             */
-/*   Updated: 2025/01/04 20:26:36 by alex             ###   ########.fr       */
+/*   Updated: 2025/01/05 15:59:00 by alex             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,13 @@
 # include <stdio.h>
 # include <math.h>
 # include <errno.h>
-#include <string.h>
+# include <string.h>
 # define HIGHT	600
 # define WIDTH	1000
 # define MAX_ITER 100
+# define MANDELBROT 1
+# define JULIA 2
+# define BURNINGSHIP 3
 
 typedef struct s_data
 {
@@ -51,9 +54,6 @@ typedef struct s_data
 	double	z_im2;
 }	t_data;
 
-# define MANDELBROT 1
-# define JULIA 2
-
 // Colors config
 int		choose_color(int iteration, int max_iter,
 			int color_shift, int color_code);
@@ -72,11 +72,12 @@ int		mouse_press(int button, int x, int y, t_data *data);
 // Fractals
 void	mandelbrot(t_data *data);
 void	julia(t_data *data);
+void	burningship(t_data *data);
 
 // Init
 void	render_fractal(t_data *data);
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
-void	ft_error(char *str, t_data *data);
+void	ft_error(t_data *data);
 int		check_arg_julia(char **str, t_data *data);
 void	check_arg(char **str, t_data *data, int n);
 void	init_data(t_data *data);
