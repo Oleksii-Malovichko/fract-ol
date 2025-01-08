@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   fractal.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alex <alex@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: omalovic <omalovic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/30 14:45:03 by alex              #+#    #+#             */
-/*   Updated: 2025/01/05 15:59:00 by alex             ###   ########.fr       */
+/*   Updated: 2025/01/08 13:15:58 by omalovic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FRACTAL_H
 # define FRACTAL_H
 
-# include "../lib/minilibx-linux/mlx.h"
+# include "../lib/minilibx_opengl/mlx.h"
 # include "../lib/ft_printf/ft_printf.h"
 # include <stdlib.h>
 # include <stdio.h>

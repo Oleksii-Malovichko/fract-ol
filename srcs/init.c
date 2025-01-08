@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alex <alex@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: omalovic <omalovic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/04 17:41:19 by alex              #+#    #+#             */
-/*   Updated: 2025/01/05 15:43:33 by alex             ###   ########.fr       */
+/*   Updated: 2025/01/08 13:26:23 by omalovic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	ft_error(t_data *data)
 {
 	ft_printf("Usage: ./fractol mandelbrot|julia\n\nExamples:\n\
-./fractol mandelbrot\n./fractol burningship./fractol julia -0.7 0.27015\n\
+./fractol mandelbrot\n./fractol burningship\n./fractol julia -0.7 0.27015\n\
 ./fractol julia 0.335 0.355\n./fractol julia -0.4 0.6\n");
 	free(data);
 	exit(1);
@@ -65,7 +65,7 @@ void	check_arg(char **str, t_data *data, int n)
 {
 	if (ft_strcmp(str[1], "mandelbrot") == 0 && n == 2)
 		(data)->fractol = MANDELBROT;
-	if (ft_strcmp(str[1], "burningship") == 0 && n == 2)
+	else if (ft_strcmp(str[1], "burningship") == 0 && n == 2)
 		(data)->fractol = BURNINGSHIP;
 	else if (ft_strcmp(str[1], "julia") == 0 && n == 4)
 	{
